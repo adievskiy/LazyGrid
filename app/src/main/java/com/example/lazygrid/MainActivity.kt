@@ -5,7 +5,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.gestures.FlingBehavior
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.items
@@ -42,14 +44,16 @@ fun LazyVerticalGrid() {
     val gridItems = List(100) { bookList.random() }
     androidx.compose.foundation.lazy.grid.LazyVerticalGrid(
         columns = GridCells.Fixed(3),
-        horizontalArrangement = Arrangement.Center
+        horizontalArrangement = Arrangement.Center,
         ) {
         items(gridItems) {item ->
             Image(
                 painter = painterResource(id = item.image),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
-                modifier = Modifier.size(width = 150.dp, height = 250.dp)
+                modifier = Modifier
+                    .size(width = 150.dp, height = 250.dp)
+                    .padding(3.dp)
             )
         }
     }
